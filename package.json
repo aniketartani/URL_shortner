@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-url-shortener": "^1.1.11"
+    "express": "^4.17.1",
+    "node-url-shortener": "^1.1.11",
+    "pug": "^3.0.2"
   }
 }
