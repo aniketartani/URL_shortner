@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const shortUrl = require('node-url-shortener');
-let port = 80;
+let port = 3000;
 
 //EXPRESS RELATED STUFF
 app.use('/static', express.static('static'));//Serving the static files
@@ -20,12 +20,19 @@ app.post('/', (req, res) => {
         console.log(url);
         let a = url;
         const params = {'url':`${a}`};
-    
-    res.status(200).render('index',params)});
+        res.status(200).render('index',params)});
 })
-
-
+app.get('/', (req, res) => {
+    
+    myurl = req.body.myurl;
+    shortUrl.short(`${myurl}`, function (err, url) {
+        console.log(url);
+        let a = url;
+        const params = {'url':`${a}`};  
+        res.status(200).render('index',params)});
+})
 //START THE SERVER
+
 app.listen(port, () => {
     console.log(`The application is started successfully on port ${port}`)
 })
